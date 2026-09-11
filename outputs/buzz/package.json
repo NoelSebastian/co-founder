@@ -1,0 +1,19 @@
+{
+  "name": "buzz-workspace",
+  "private": true,
+  "packageManager": "pnpm@11.4.0",
+  "scripts": {
+    "dev:live:noel": "pnpm --dir desktop exec vite --mode live-test --host 127.0.0.1 --port 5174",
+    "dev:live:alex": "pnpm --dir desktop exec vite --mode live-test --host 127.0.0.1 --port 5175",
+    "dev": "pnpm --dir desktop exec vite --mode demo --host 127.0.0.1 --port 5173",
+    "build": "pnpm --dir desktop exec tsc --noEmit && pnpm --dir desktop exec vite build --mode demo",
+    "preview": "pnpm --dir desktop exec vite preview --host 127.0.0.1 --port 5173",
+    "check": "pnpm -r check"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.6"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.19"
+  }
+}

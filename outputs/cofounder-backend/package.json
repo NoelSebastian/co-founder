@@ -1,0 +1,1 @@
+{"name":"cofounder-backend","private":true,"type":"module","scripts":{"start":"node server.mjs","test":"node --test *.test.mjs"},"dependencies":{"@modelcontextprotocol/sdk":"^1.0.0","@openai/codex-sdk":"0.153.4","@playwright/mcp":"0.0.80","@slack/socket-mode":"^3.0.1","@slack/web-api":"^8.1.1","nostr-tools":"^2.0.0","pg":"^8.0.0"}}

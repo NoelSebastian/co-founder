@@ -1,0 +1,17 @@
+# Local identities, OAuth credentials, browser profiles, databases and logs
+/work/
+**/node_modules/
+**/target/
+**/dist/
+**/.tanstack/
+**/.DS_Store
+**/*.log
+**/.env
+**/.env.local
+**/.env.*.local
+**/*.sqlite
+**/*.sqlite3
+**/*.db
+**/*.app/
+**/test-results/
+**/playwright-report/

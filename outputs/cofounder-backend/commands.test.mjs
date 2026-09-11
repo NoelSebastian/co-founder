@@ -1,0 +1,2 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {isBuildCommand} from './commands.mjs';
+test('only explicit build commands dispatch; discussion and negation do not',()=>{for(const text of ['build','@Lovable, build','@Lovable  build the approved PRD.'])assert.equal(isBuildCommand(text),true);for(const text of ['do not build','@Lovable do not build','should we build?','quote: build','@Lovable build a secret app',null])assert.equal(isBuildCommand(text),false);});

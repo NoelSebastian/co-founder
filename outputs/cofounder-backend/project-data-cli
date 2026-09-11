@@ -1,0 +1,22 @@
+#!/bin/sh
+set -eu
+if [ "${1:-}" = "--help" ]; then
+  echo 'Project data: project-data JSON'
+  echo 'List connections: {"operation":"list"}'
+  echo 'Read current pipeline: {"operation":"read","source":"sales-pipeline","resource":"pipeline_summary"}'
+  echo 'Read records: {"operation":"read","source":"sales-pipeline","resource":"deals"}'
+  echo 'Edit a deal: {"operation":"update_deal","source":"sales-pipeline","id":"deal UUID","patch":{"value":25000}}'
+  echo 'Access is checked on every request. Denied requests must not be bypassed.'
+  exit 0
+fi
+payload='{"operation":"list"}'
+if [ "$#" -gt 0 ]; then payload=$1; fi
+credential=${BUZZ_PROJECT_DATA_TOKEN:-}
+if [ -z "$credential" ] && [ -r /run/project-data-token ]; then
+  credential=$(cat /run/project-data-token)
+fi
+curl --fail-with-body --silent --show-error --max-time 90 \
+  -H "Authorization: Bearer ${credential:?Project data credential is missing}" \
+  -H 'Content-Type: application/json' -H 'Host: 127.0.0.1:5180' \
+  --data "$payload" \
+  http://host.docker.internal:5180/project-data/agent
